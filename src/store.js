@@ -10,10 +10,8 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTION_INCREMENT:
-      console.log("INC");
       return { ...state, counter: state.counter + 1 };
     case ACTION_DECREMENT:
-      console.log("DEC");
       return { ...state, counter: state.counter - 1 };
     default:
       return state;
