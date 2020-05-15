@@ -1,20 +1,21 @@
-import { ACTION_INCREMENT, ACTION_DECREMENT } from "./actionTypes";
 
 import { createStore } from "redux";
+import counterReducer from './reducer'
+import {loadState,peristState} from '../localstorage'
 
-const initialState = {
-  counter: 0
-};
 
-const counterReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ACTION_INCREMENT:
-      return { ...state, counter: state.counter + 1 };
-    case ACTION_DECREMENT:
-      return { ...state, counter: state.counter - 1 };
-    default:
-      return state;
+const loadedState = loadState()
+
+console.log(loadedState)
+
+const store = createStore(counterReducer,loadedState)
+
+store.subscribe(() => {
+   try {  
+    peristState(store.getState()) 
+  } catch(error) {
+    console.log('Localstorage not supported')
   }
-};
+})
 
-export const store = createStore(counterReducer);
+export { store }
