@@ -1,8 +1,12 @@
-import { ACTION_INCREMENT, ACTION_DECREMENT } from "./actionTypes";
+import { ACTION_INCREMENT, ACTION_DECREMENT, ACTION_RESET } from "./actionTypes"
 
 export const inc = () => {
-  return { type: ACTION_INCREMENT };
-};
+  return { type: ACTION_INCREMENT }
+}
 export const dec = () => {
-  return { type: ACTION_DECREMENT };
-};
+  return { type: ACTION_DECREMENT }
+}
+
+export const reset = () => {
+  return { type: ACTION_RESET }
+}
